@@ -20,7 +20,7 @@ class Hero:
     def show_status(self):
         print(f"{self.__name}'s status: ")
         print(f"Level: {self.__lvl}")
-        print(f"Experience: {self.__exp}")
+        print(f"Experience: {self.__exp}/{self.__exp_limit}")
         print(f"Health: {self.__hp}")
         print(f"Mana: {self.__mp}")
         print(f"Attack: {self.__atk}")
@@ -30,8 +30,6 @@ class Hero:
         damage = self.__atk
         print(f"{self.__name} attacks!")
         target.take_damage(damage)
-    
 
-Bob = Hero("Bob", 0, 1, 100, 10, 5, {"title": "Iron Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
-Bob.show_status
-
+Bob = Hero("Bob", 0, 100, 1, 100, 10, 5, {"title": "Iron Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
+Bob.show_status()
