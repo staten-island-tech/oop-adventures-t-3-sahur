@@ -13,6 +13,14 @@ class Enemy:
         print(f"Attack: {self.__atk}")
         print(f"Inventory: {self.__inventory}")
         print(f"Skills: {self.__skills}")
+    def damage(self, amount):
+        self.__hp -= amount
+        if self.__hp < 0:
+            self.__hp = 0
+        print(f"{self.__name} too {amount} damage. Hp is now {self.__hp}")
+    def alive(self):
+        return self.__hp > 0
+
 
 Goblin = Enemy("Goblin", 45, 3, 5, {"title": "Wooden Dagger", "atk": 2}, {"title": "Stab", "atk": 2, "mp": -1})
 Goblin_Archer = Enemy("Goblin Archer", 35, 4, 10, {"title": "Short Bow", "atk": 3}, {"title": "Aim", "atk": 5, "mp": -2})
