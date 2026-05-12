@@ -1,3 +1,5 @@
+from Monsters import Enemy
+
 class Hero:
     def __init__(self, name, exp, exp_limit, lvl, hp, mp, atk, inventory, skills):
         self.__name = name
@@ -26,10 +28,9 @@ class Hero:
         print(f"Attack: {self.__atk}")
         print(f"Inventory: {self.__inventory}")
         print(f"Skills: {self.__skills}")
-    def attack(self, target):
+    def attack(self):
         damage = self.__atk
         print(f"{self.__name} attacks!")
-        target.take_damage(damage)
 
 Bob = Hero("Bob", 0, 100, 1, 100, 10, 5, {"title": "Iron Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Bob.show_status()

@@ -13,7 +13,7 @@ class Enemy:
         print(f"Attack: {self.__atk}")
         print(f"Inventory: {self.__inventory}")
         print(f"Skills: {self.__skills}")
-    def damage(self, amount):
+    def target(self, amount):
         self.__hp -= amount
         if self.__hp < 0:
             self.__hp = 0
