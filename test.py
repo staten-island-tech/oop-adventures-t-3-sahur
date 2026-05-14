@@ -3,28 +3,35 @@ from Heros import Hero
 from Enemies import Enemy
 from Enemies import enemies_list
 Gavin = Hero("Gavin", 0, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
-Gavin.show_status
+round = 0
 Fight = random.choice(enemies_list)
 Option = input("Pick a choice. 1. Fight 2. Rest")
 if Option == "2":
     Gavin.hp += 10
     print(f"Gavin is now well rested. Hp is now {Gavin.hp}")
 elif Option == "1":
-    print(f"Gavin encounters a {Fight.name}!")
-    Fight.show_enemy()
-    print("What action would you like to do:")
-    print("1. Attack")
-    print("2. Slash")
-    choice = input("Pick 1 or 2:")
-
-    if choice == "1":
-        print(f"Gavin attacks {Fight.name}!")
-    Fight.hp -= Gavin.atk
-    print(f"{Fight.name}'s hp is now {Fight.hp}")
-    if choice == "2":
-     print(f"Gavin slashes {Fight.name}!")
-    slash_dmg = Gavin.atk + 3
-    Fight.hp -= slash_dmg
-    print(f"{Fight.name}'s hp is now {Fight.hp}")
+    while Gavin.hp >= 0 or Fight.hp >= 0:
+        print(f"Gavin encounters a {Fight.name}!")
+        Fight.show_enemy() 
+        print(f"Round {round}") 
+        print("What action would you like to do:")
+        print("1. Attack")
+        print("2. Slash")
+        choice = input("Pick 1 or 2:")
+        if choice == "1":
+            print(f"Gavin attacks {Fight.name}!")
+            attack_dmg = Gavin.atk + 2
+            Fight.hp -= Gavin.atk
+            print(f"{Fight.name}'s hp is now {Fight.hp}")
+            round +=1
+        elif choice == "2":
+            print(f"Gavin slashes {Fight.name}!")
+            slash_dmg = Gavin.atk + 5
+            Fight.hp -= slash_dmg
+            print(f"{Fight.name}'s hp is now {Fight.hp}")
+            round +=1
+        if Gavin.hp <= 0 or Fight.hp <= 0:
+            print("The battle is over.")
+            break
 else:
-        print("Invalid choice")
+    print("Invalid choice")
