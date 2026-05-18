@@ -20,8 +20,5 @@ while Gavin.hp >= 0 or Fight.hp >= 0:
         print(f"{Fight.name}'s hp is now {Fight.hp}")
         round += 1
         Gavin.mp += 1
-    if Gavin.hp <= 0 or Fight.hp <= 0:
-        print("The battle is over")
-        break
 else:
     print("Invalid choice")
