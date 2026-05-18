@@ -10,12 +10,13 @@ class Hero:
         self.inventory = inventory
         self.skills = skills
     def lvl_up(self):
-        self.exp = 0
-        self.exp_limit += 100
-        self.lvl += 1
-        self.hp += 20
-        self.mp += 2
-        self.atk += 2
+        if self.exp >= self.exp_limit:
+            self.exp = 0
+            self.exp_limit += 100
+            self.lvl += 1
+            self.hp += 20
+            self.mp += 2
+            self.atk += 2
         print(f"{self.name} has leveled up! Level: {self.lvl}")
     def show_status(self):
         print(f"{self.name}'s status: ")
