@@ -2,7 +2,7 @@ import random
 from Heros import Hero
 from Enemies import Enemy
 from Enemies import enemies_list
-Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+Gavin = Hero("Gavin", 0, 100, 1, 100, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
 round = 0
 Fight = random.choice(enemies_list)
 Option = input("Pick a choice. 1. Fight 2. Rest")
@@ -34,10 +34,14 @@ while Gavin.hp >= 0 or Fight.hp >= 0:
             print(f"{Fight.name}'s hp is now {Fight.hp}")
             round +=1
             Gavin.mp +=1
-        if Gavin.hp <= 0 or Fight.hp <= 0:
+        if Fight.hp <= 0:
            print("The battle is over")
-           Gavin.exp += 15
+           Gavin.exp += Fight.exp_given
+           print(f"Gavin gained {Fight.exp_given} experience!")
            Gavin.show_status()
            break
+        if Gavin.hp <= 0:
+            print("You have fallen.")
+            break
 else:
-    print("Invalid choice")
+    print("Invalid Choice")
