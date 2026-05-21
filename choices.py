@@ -1,12 +1,8 @@
-from fight import Fight
-from Heros import Hero
+""" from Heros import Hero
 Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+
 while Gavin.hp >= 0 or Fight.hp >= 0:
         Fight.show_enemy() 
-        print(f"Round {round}") 
-        print("What action would you like to do:")
-        print("1. Attack")
-        print("2. Slash")
         choice = input("Pick 1 or 2:")
         if choice == "1":
             print(f"Gavin attacks {Fight.name}!")
@@ -21,4 +17,4 @@ while Gavin.hp >= 0 or Fight.hp >= 0:
             Fight.hp -= slash_dmg
             print(f"{Fight.name}'s hp is now {Fight.hp}")
             round +=1
-            Gavin.mp +=1
+            Gavin.mp +=1 """

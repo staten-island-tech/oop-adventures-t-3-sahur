@@ -34,5 +34,5 @@ class Hero:
         if self.hp > 0:
             self.hp = 0
         print("You have died.")
-Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+Gavin = Hero("Gavin", 0, 100, 1, 100, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Gavin.show_status()

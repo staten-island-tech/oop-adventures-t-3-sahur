@@ -1,6 +1,6 @@
 import random
 from Heros import Hero
-from Enemies import Enemy
+import Enemies
 from Enemies import enemies_list
 Gavin = Hero("Gavin", 0, 100, 1, 100, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
 round = 0
