@@ -1,7 +1,8 @@
 import random
 from Heros import Hero
 from Monsters import enemies_list
-
+import Monsters
+from Monsters import Goblin_skill_atk
 
 Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Fight = random.choice(enemies_list)
@@ -34,17 +35,16 @@ elif Option == "1":
             print(f"{Fight.name}'s hp is now {Fight.hp}")
             round += 1
             Gavin.mp += 1
+            Gavin.hp -= 1
         if Fight.hp <= 0:
             print("The battle is over")
-            Gavin.exp += 15
+            Gavin.exp += Fight.exp_given
             Gavin.show_status()
             break
         if Gavin.hp <= 0:
             print(f"{Gavin.name} has fallen")
             break
-        else:
+        else:   
             print("Invalid choice")
-else:
-    print("Invalid choice")
-    Gavin.show_status()
-    Gavin.hp -= 10
+            Gavin.show_status()
+        Gavin.hp -= Fight.atk 

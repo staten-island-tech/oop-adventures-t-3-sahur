@@ -27,13 +27,6 @@ class Hero:
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
-    def attack(self):
-        damage = self.atk
-        print(f"{self.name} attacks!")
-    def death(self):
-        if self.hp > 0:
-            self.hp = 0
-        print(f"{self.name} has died.")
 
 Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Gavin.show_status()
