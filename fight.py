@@ -12,8 +12,8 @@ if Option == "2":
     print(f"Gavin is now well rested. Hp is now {Gavin.hp}")
 elif Option == "1":
     print(f"Gavin encounters a {Fight.name}!")
-    print("-----------------------------------------------------------------------")
     while Gavin.hp >= 0 or Fight.hp >= 0:
+        print("-----------------------------------------------------------------------")
         print("What action would you like to do:")
         print("1. Attack")
         print("2. Slash")
@@ -43,14 +43,18 @@ elif Option == "1":
             round +=1
             Gavin.mp += 1
         if Fight.hp <= 0:
+           print("-----------------------------------------------------------------------")
            print("The battle is over")
+           print("-----------------------------------------------------------------------")
            Gavin.exp += Fight.exp_given
            print(f"Gavin gained {Fight.exp_given} experience!")
            print("-----------------------------------------------------------------------")
            Gavin.show_status()
-           break
+           
         if Gavin.hp <= 0:
+            print("-----------------------------------------------------------------------")
             print("You have fallen.")
+            print("-----------------------------------------------------------------------")
             break
 else:
     print("Invalid Choice")
