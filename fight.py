@@ -1,7 +1,6 @@
 import random
 from Heros import Hero
 from Monsters import enemies_list
-import Monsters
 
 Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Fight = random.choice(enemies_list)
