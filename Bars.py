@@ -7,3 +7,5 @@ Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}
 
 if Gavin.mp <= 0:
     choice != 2
+if Gavin.hp <= 0:
+    
