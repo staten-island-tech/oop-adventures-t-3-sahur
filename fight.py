@@ -1,6 +1,5 @@
 import random
 from Heros import Hero
-import Enemies
 from Enemies import enemies_list
 Gavin = Hero("Gavin", 0, 100, 1, 100, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
 round = 0
@@ -58,4 +57,3 @@ elif Option == "1":
             break
 else:
     print("Invalid Choice")
-    Gavin.show_status()
