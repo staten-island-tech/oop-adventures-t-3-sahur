@@ -2,19 +2,17 @@ import random
 from Heros import Hero
 from Monsters import enemies_list
 
-Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
+Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Fight = random.choice(enemies_list)
 round = 0
-Option = input("Pick a choice: 1. Fight 2. Rest")
-while Gavin.hp > 0:
-    if Option == "2":
-        Gavin.hp += 10
-        print(f"Gavin is well rested. Hp is now {Gavin.hp}")
-    elif Option == "1":
-        print(f"Gavin encounters a {Fight.name}")
-        print("----------------------------------------------------------------------------")
-        Fight.show_enemy()
-        print(f"Round {round}")
+Option = input("Pick a choice: ")
+
+if Option == "1":
+    print(f"Gavin encounters a {Fight.name}")
+    print("----------------------------------------------------------------------------")
+    Fight.show_enemy()
+    print(f"Round {round}")
+    while Gavin.hp >= 0 or Fight.hp >= 0:
         print("----------------------------------------------------------------------------")
         print("What action do you like to do:")
         print("1: Attack")
@@ -49,18 +47,19 @@ while Gavin.hp > 0:
             print(f"Round {round}")
             print("Invalid choice")   
             Gavin.show_status()
-        Gavin.hp -= Fight.atk 
+        Gavin.hp -= Fight.atk
         if Fight.hp <= 0:
             print("----------------------------------------------------------------------------")
             print("The battle is over")
             print("----------------------------------------------------------------------------")
             print(f"Gavin gained {Fight.exp_given} experience.")
             Gavin.exp += Fight.exp_given
+            Gavin.lvl_up()
             Gavin.show_status()
         if Gavin.hp <= 0:
             print("----------------------------------------------------------------------------")
             print(f"{Gavin.name} has fallen")
             print("----------------------------------------------------------------------------")
             break
-    else:
-        print("Invalid Choice")
+else:
+    print("Invalid Choice")
