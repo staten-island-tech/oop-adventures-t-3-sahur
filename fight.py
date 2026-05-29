@@ -1,7 +1,7 @@
 import random
 from Heros import Hero
 from Enemies import enemies_list
-Gavin = Hero("Gavin", 0, 100, 1, 100, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
 round = 0
 Fight = random.choice(enemies_list)
 print("-----------------------------------------------------------------------")
@@ -46,6 +46,7 @@ elif Option == "1":
            print("The battle is over")
            print("-----------------------------------------------------------------------")
            Gavin.exp += Fight.exp_given
+           Gavin.lvl_up()
            print(f"Gavin gained {Fight.exp_given} experience!")
            print("-----------------------------------------------------------------------")
            Gavin.show_status()

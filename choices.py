@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 """ from Heros import Hero
 Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
 
+=======
+from fight import Fight
+from Heros import Hero
+Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+>>>>>>> Stashed changes
 while Gavin.hp >= 0 or Fight.hp >= 0:
         Fight.show_enemy() 
         choice = input("Pick 1 or 2:")
