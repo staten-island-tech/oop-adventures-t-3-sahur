@@ -7,15 +7,17 @@ print("1 - Forest")
 print("2 - Inn") 
 print("3 - Training Camp")
 Decision = input("Decide where: ")
-
-if Decision == 1:
-    from fight import Option
-    Option
-elif Decision == 2:
-    Gavin.hp += 10
-    print(f"Gavin is well rested. Hp is now {Gavin.hp}")
-elif Decision == 3:
-    Gavin.atk += 1
-    Gavin.health_max += 3
-    Gavin.mana_max += 1
-    Gavin.show_status()
+while Gavin.hp > 0:
+    if Decision == "1":
+        from fight import Option
+        Option
+    elif Decision == "2":
+        Gavin.hp += 10
+        print(f"Gavin is well rested. Hp is now {Gavin.hp}")
+    elif Decision == "3":
+        Gavin.atk += 1
+        Gavin.health_max += 3
+        Gavin.mana_max += 1
+        Gavin.show_status()
+    else: 
+        print("Invalid choice")

@@ -11,9 +11,11 @@ Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", 
 >>>>>>> 2dbc03c30e4a7ad4c1ed18a625c72e8318dc1506
 Fight = random.choice(enemies_list)
 round = 0
-Option = input("Pick a choice: ")
-
-if Option == "1":
+Option = input("Pick a choice: 1. Fight or 2. Head to inn")
+if Option == "2":
+    Gavin.hp += 10
+    print(f"Gavin is well rested. Hp is now {Gavin.hp}")
+elif Option == "1":
     print(f"Gavin encounters a {Fight.name}")
     print("----------------------------------------------------------------------------")
     Fight.show_enemy()
