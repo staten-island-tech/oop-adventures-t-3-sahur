@@ -1,7 +1,7 @@
 import random
 from Heros import Hero
 from Enemies import enemies_list
-Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 5, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 5, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 round = 0
 Fight = random.choice(enemies_list)
 print("-----------------------------------------------------------------------")

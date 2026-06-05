@@ -1,6 +1,6 @@
 from fight import Fight
 from Heros import Hero
-Gavin = Hero("Gavin", 0, 100, 1, 100, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3})
+Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 5, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 while Gavin.hp >= 0 or Fight.hp >= 0:
         Fight.show_enemy() 
         print(f"Round {round}") 
