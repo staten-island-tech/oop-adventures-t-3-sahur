@@ -5,16 +5,17 @@ from Monsters import enemies_list
 Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Fight = random.choice(enemies_list)
 round = 0
-Option = input("Pick a choice: 1. Fight or 2. Head to inn")
-if Option == "2":
-    Gavin.hp += 10
-    print(f"Gavin is well rested. Hp is now {Gavin.hp}")
-elif Option == "1":
-    print(f"Gavin encounters a {Fight.name}")
-    print("----------------------------------------------------------------------------")
-    Fight.show_enemy()
-    print(f"Round {round}")
-    while Gavin.hp >= 0 or Fight.hp >= 0:
+while Gavin.hp >= 0 or Fight.hp >= 0:
+    Option = input("Pick a choice: 1. Fight or 2. Run to inn")
+    if Option == "2":
+        Gavin.hp += 10
+        print(f"Gavin is well rested. Hp is now {Gavin.hp}")
+        Gavin.show_status()
+    elif Option == "1":
+        print(f"Gavin encounters a {Fight.name}")
+        print("----------------------------------------------------------------------------")
+        Fight.show_enemy()
+        print(f"Round {round}")
         print("----------------------------------------------------------------------------")
         print("What action do you like to do:")
         print("1: Attack")
@@ -58,6 +59,8 @@ elif Option == "1":
             Gavin.exp += Fight.exp_given
             Gavin.lvl_up()
             Gavin.show_status()
+            Fight = random.choice(enemies_list)
+            Fight.hp = Fight.hp_limit
         if Gavin.hp <= 0:
             print("----------------------------------------------------------------------------")
             print(f"{Gavin.name} has fallen")
