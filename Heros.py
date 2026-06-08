@@ -21,7 +21,9 @@ class Hero:
             self.atk += 2
         print(f"{self.name} leveled up to {self.lvl}!")
     def show_status(self):
+        print("==============================")
         print(f"{self.name}'s status: ")
+        print("==============================")
         print(f"Level: {self.lvl}")
         print(f"Experience: {self.exp}/{self.exp_limit}")
         print(f"Health: {self.hp}/{self.hp_limit}")
@@ -29,12 +31,6 @@ class Hero:
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
-    def attack(self):
-        damage = self.atk
-        print(f"{self.name} attcks")
-    def death(self):
-        if self.hp > 0:
-            self.hp = 0
         print("You have died.")
 Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 5, 5, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Gavin.show_status()

@@ -5,7 +5,7 @@ Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 5, 5, 5, {"title": "Wooden Sword", "a
 round = 0
 Fight = random.choice(enemies_list)
 print("-----------------------------------------------------------------------")
-Option = input("Pick a choice. 1. Fight 2. Rest")
+Option = input("Pick a choice. 1. Fight 2. Rest at Inn")
 
 if Option == "1":
     print(f"Gavin encounters a {Fight.name}!")
@@ -57,5 +57,8 @@ if Option == "1":
             print("You have fallen.")
             print("-----------------------------------------------------------------------")
             break
+if Option == "2":
+    from Intro import Decision
+    Decision == "3"
 else:
     print("Invalid Choice")
