@@ -21,9 +21,11 @@ class Hero:
             self.health_max += 20
             self.mana_max += 2
             self.atk += 2
-        print(f"{self.name} has leveled up! Level: {self.lvl}")
+            print(f"{self.name} has leveled up! Level: {self.lvl}")
     def show_status(self):
+        print("=====================================")
         print(f"{self.name}'s status: ")
+        print("=====================================")
         print(f"Level: {self.lvl}")
         print(f"Experience: {self.exp}/{self.exp_limit}")
         print(f"Health: {self.hp}/{self.health_max}")
@@ -31,6 +33,13 @@ class Hero:
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
+    def max(self):
+        if self.mp >= self.mana_max:
+            print("Gavin is already max hp")
+        else:
+            self.mp += 1
+            if self.mp > self.mana_max:
+                self.mp = self.mana_max
 
 Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Gavin.show_status()

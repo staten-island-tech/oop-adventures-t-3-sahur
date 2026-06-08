@@ -8,8 +8,12 @@ round = 0
 while Gavin.hp >= 0 or Fight.hp >= 0:
     Option = input("Pick a choice: 1. Fight or 2. Run to inn")
     if Option == "2":
-        Gavin.hp += 10
-        print(f"Gavin is well rested. Hp is now {Gavin.hp}")
+        if Gavin.hp >= Gavin.health_max:
+            print("Gavin is already max hp")
+        else:
+            Gavin.hp += 10
+            if Gavin.hp > Gavin.health_max:
+                Gavin.hp = Gavin.health_max
         Gavin.show_status()
     elif Option == "1":
         print(f"Gavin encounters a {Fight.name}")
@@ -59,6 +63,9 @@ while Gavin.hp >= 0 or Fight.hp >= 0:
             Gavin.exp += Fight.exp_given
             Gavin.lvl_up()
             Gavin.show_status()
+            print("You head back to town.")
+            from app import Decision
+            Decision
             Fight = random.choice(enemies_list)
             Fight.hp = Fight.hp_limit
         if Gavin.hp <= 0:
