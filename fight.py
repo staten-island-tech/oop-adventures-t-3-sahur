@@ -1,5 +1,5 @@
 import random
-from Heros import Hero
+from app import Hero
 from Monsters import enemies_list
 
 Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
@@ -63,9 +63,6 @@ while Gavin.hp >= 0 or Fight.hp >= 0:
             Gavin.exp += Fight.exp_given
             Gavin.lvl_up()
             Gavin.show_status()
-            print("You head back to town.")
-            from app import Decision
-            Decision
             Fight = random.choice(enemies_list)
             Fight.hp = Fight.hp_limit
         if Gavin.hp <= 0:
