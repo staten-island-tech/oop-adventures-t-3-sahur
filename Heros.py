@@ -33,13 +33,6 @@ class Hero:
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
-    def max(self):
-        if self.mp >= self.mana_max:
-            print("Gavin is already max hp")
-        else:
-            self.mp += 1
-            if self.mp > self.mana_max:
-                self.mp = self.mana_max
 
 Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
 Gavin.show_status()
