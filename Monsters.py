@@ -20,8 +20,8 @@ class Enemy:
         print(f"Skills: {self.skill}")
 
 
-Goblin = Enemy("Goblin", 50, 50, 3, 5, 5, 15, {"title": "Wooden Dagger", "atk": 2}, {"title": "Stab", "atk": 2, "mp": -1})
-Goblin_Archer = Enemy("Goblin Archer", 40, 40, 4, 10, 10, 20, {"title": "Short Bow", "atk": 3}, {"title": "Aim", "atk": 5, "mp": -2})
+Goblin = Enemy("Goblin", 50, 50, 3, 5, 5, 15, {"title": "Wooden Dagger", "atk": 2}, {"title": "Stab", "atk": 2, "mp": 1})
+Goblin_Archer = Enemy("Goblin Archer", 40, 40, 4, 10, 10, 20, {"title": "Short Bow", "atk": 3}, {"title": "Aim", "atk": 5, "mp": 2})
 Goblin_Brute = Enemy("Goblin Brute", 80, 80, 2, 5, 5, 25, {"title": "Leather Armor", "hp": 10}, {"title": "Taunt", "atk": 2})
 enemies_list = [Goblin, Goblin_Archer, Goblin_Brute]
 """ Goblin_skills_list = ["name: Stab", "name: Flurry"]

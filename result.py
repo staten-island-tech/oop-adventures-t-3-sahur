@@ -1,23 +1,19 @@
-""" from app import Decision
-from Heros import Hero """
-Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
-Score = 0
+from Heros import Gavin
+Score = ""
 day = 0
-if Decision == "1" or "2" or "3" or "4":
-    day += 1
 if Gavin.hp <= 0:
     print("Days: ", day)
     if day <= 5:
         Score = ("F")
-    if day <= 10:
+    elif day <= 10:
         Score = ("E")
-    if day <= 15:
+    elif day <= 15:
         Score = ("D")
-    if day <= 20:
+    elif day <= 20:
         Score = ("C")
-    if day <= 30:
+    elif day <= 30:
         Score = ("B")
-    if day <= 50:
+    elif day <= 50:
         Score = ("A")
-    if day <= 100:
+    else:
         Score = ("S")

@@ -13,7 +13,7 @@ class Hero:
         self.skills = skills
     def lvl_up(self):
         if self.exp >= self.exp_limit:
-            self.exp = 0
+            self.exp -= self.exp_limit
             self.exp_limit += 100
             self.lvl += 1
             self.hp += 20
@@ -33,6 +33,16 @@ class Hero:
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
+    def skill_use(self, skill_name):
+        weapon_atk = self.inventory["atk"]
+        skill = self.skills[skill_name]
+        if "mp" in skill:
+            if self.mp < skill["mp"]:
+                print("Not enough mp")
+                return 0
+            self.mp -= skill["mp"]
 
-Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
+        return self.atk + weapon_atk + skill["atk"]
+
+Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": 2})
 Gavin.show_status()
