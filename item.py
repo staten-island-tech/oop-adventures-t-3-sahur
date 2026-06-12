@@ -1,4 +1,4 @@
-from fight import rounds
+
 from Heros import Gavin
 def weapon(Gavin, rounds):
     if rounds == 100:

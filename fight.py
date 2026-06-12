@@ -1,8 +1,6 @@
 import random
 from Heros import Gavin
 from Monsters import enemies_list
-from item import weapon
-
 def battle(Gavin):
     Fight = random.choice(enemies_list)
     rounds = 0
@@ -29,7 +27,6 @@ def battle(Gavin):
             print("----------------------------------------------------------------------------")
             if choice == "1":
                 rounds += 1
-                weapon(Gavin, rounds)
                 print(f"Round {rounds}")
                 print(f"Hero attacks {Fight.name}")
                 print("----------------------------------------------------------------------------")
@@ -41,7 +38,6 @@ def battle(Gavin):
                 Gavin.mp += 1
             elif choice == "2": 
                 rounds += 1
-                weapon(Gavin, rounds)
                 print(f"Round {rounds}")
                 print(f"Hero slashes {Fight.name}")
                 print("----------------------------------------------------------------------------")
@@ -54,7 +50,6 @@ def battle(Gavin):
                 Gavin.mp += 1
             else:
                 rounds += 1
-                weapon(Gavin, rounds)
                 print(f"Round {rounds}")
                 print("Invalid choice")   
                 Gavin.show_status()
