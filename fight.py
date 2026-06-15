@@ -34,6 +34,8 @@ def battle(Gavin):
                 atk_dmg = Gavin.atk + 2
                 Fight.hp -= atk_dmg
                 Gavin.mp += 1
+                if Gavin.mp > Gavin.mana_max:
+                    Gavin.mp = Gavin.mana_max
                 print(f"{Fight.name}'s hp is now {Fight.hp}")
                 print(f"{Gavin.name}'s hp is now {Gavin.hp}")
                 print(f"{Gavin.name}'s mp is now {Gavin.mp}")
