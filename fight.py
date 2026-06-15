@@ -3,7 +3,9 @@ from Heros import Gavin
 from Monsters import enemies_list
 def battle(Gavin):
     Fight = random.choice(enemies_list)
+    Fight.hp = Fight.hp_limit
     rounds = 0
+    print(f"Hero encounters a {Fight.name}")
     while Gavin.hp > 0 and Fight.hp > 0:
         Option = input("Pick a choice: 1. Fight or 2. Run to inn")
         if Option == "2":
@@ -15,7 +17,6 @@ def battle(Gavin):
                     Gavin.hp = Gavin.health_max
             Gavin.show_status()
         elif Option == "1":
-            print(f"Hero encounters a {Fight.name}")
             print("----------------------------------------------------------------------------")
             Fight.show_enemy()
             print(f"Round {rounds}")
@@ -39,15 +40,17 @@ def battle(Gavin):
             elif choice == "2": 
                 rounds += 1
                 print(f"Round {rounds}")
-                print(f"Hero slashes {Fight.name}")
-                print("----------------------------------------------------------------------------")
-                Gavin.mp -= 3
-                slash_dmg = Gavin.atk + 5
-                Fight.hp -= slash_dmg
-                print(f"{Fight.name}'s hp is now {Fight.hp}")
-                print(f"{Gavin.name}'s hp is now {Gavin.hp}")
-                print(f"{Gavin.name}'s mp is now {Gavin.mp}")
-                Gavin.mp += 1
+                if Gavin.mp < 2:
+                    print("Not enough mp")
+                else:
+                    print(f"Hero slashes {Fight.name}")
+                    print("----------------------------------------------------------------------------")
+                    Gavin.mp -= 2
+                    slash_dmg = Gavin.atk + 5
+                    Fight.hp -= slash_dmg
+                    print(f"{Fight.name}'s hp is now {Fight.hp}")
+                    print(f"{Gavin.name}'s hp is now {Gavin.hp}")
+                    print(f"{Gavin.name}'s mp is now {Gavin.mp}")
             else:
                 rounds += 1
                 print(f"Round {rounds}")
@@ -62,13 +65,13 @@ def battle(Gavin):
                 Gavin.exp += Fight.exp_given
                 Gavin.lvl_up()
                 Gavin.show_status()
-                Fight = random.choice(enemies_list)
-                Fight.hp = Fight.hp_limit
+                Gavin.kills += 1
+                print(f"You have killed {Gavin.kills} enemies.")
                 break
             if Gavin.hp <= 0:
                 print("----------------------------------------------------------------------------")
                 print(f"{Gavin.name} has fallen")
                 print("----------------------------------------------------------------------------")
                 break
-    else:
-        print("Invalid Choice")
+        else:
+            print("Invalid Choice")

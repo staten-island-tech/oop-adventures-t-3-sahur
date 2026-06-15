@@ -1,9 +1,11 @@
 class Hero:
-    def __init__(self, name, exp, exp_limit, lvl, hp, health_max, mp, mana_max, atk, inventory, skills):
+    def __init__(self, name, exp, exp_limit, lvl, kills, last_kill, hp, health_max, mp, mana_max, atk, inventory, skills):
         self.name = name
         self.exp = exp
         self.exp_limit = exp_limit
         self.lvl = lvl
+        self.kills = kills
+        self.last_kill = last_kill
         self.hp = hp
         self.health_max = health_max
         self.mana_max = mana_max
@@ -28,21 +30,12 @@ class Hero:
         print("=====================================")
         print(f"Level: {self.lvl}")
         print(f"Experience: {self.exp}/{self.exp_limit}")
+        print(f"Kills: {self.kills}")
         print(f"Health: {self.hp}/{self.health_max}")
         print(f"Mana: {self.mp}/{self.mana_max}")
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
-    def skill_use(self, skill_name):
-        weapon_atk = self.inventory["atk"]
-        skill = self.skills[skill_name]
-        if "mp" in skill:
-            if self.mp < skill["mp"]:
-                print("Not enough mp")
-                return 0
-            self.mp -= skill["mp"]
 
-        return self.atk + weapon_atk + skill["atk"]
-
-Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": 2})
+Gavin = Hero("Gavin", 0, 100, 1, 0, 0,100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": 2})
 Gavin.show_status()
