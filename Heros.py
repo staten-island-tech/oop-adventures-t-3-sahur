@@ -11,6 +11,7 @@ class Hero:
         self.atk = atk
         self.inventory = inventory
         self.skills = skills
+        self.total_rounds = 1
     def lvl_up(self):
         if self.exp >= self.exp_limit:
             self.exp = 0
@@ -33,6 +34,3 @@ class Hero:
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
-
-Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
-Gavin.show_status()

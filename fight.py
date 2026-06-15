@@ -1,74 +1,85 @@
 import random
-from app import Hero
-from Monsters import enemies_list
+from Enemies import enemies_list
+from Heros import Hero
+from item import weapon_upgrade
+def start_fight(Gavin: Hero, round_count):
+    Fight = random.choice(enemies_list)
+    if Fight.name == "Goblin":
+            Fight.hp = 50
+    elif Fight.name == "Goblin Archer":
+            Fight.hp = 40
+    else:
+            Fight.hp = 80
 
-Gavin = Hero("Gavin", 0, 100, 1, 100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": -2})
-Fight = random.choice(enemies_list)
-round = 0
-while Gavin.hp >= 0 or Fight.hp >= 0:
-    Option = input("Pick a choice: 1. Fight or 2. Run to inn")
-    if Option == "2":
-        if Gavin.hp >= Gavin.health_max:
-            print("Gavin is already max hp")
-        else:
-            Gavin.hp += 10
-            if Gavin.hp > Gavin.health_max:
-                Gavin.hp = Gavin.health_max
-        Gavin.show_status()
-    elif Option == "1":
-        print(f"Gavin encounters a {Fight.name}")
-        print("----------------------------------------------------------------------------")
-        Fight.show_enemy()
-        print(f"Round {round}")
-        print("----------------------------------------------------------------------------")
-        print("What action do you like to do:")
-        print("1: Attack")
-        print("2: Slash")
-        choice = input("Pick 1 or 2: ")
-        print("----------------------------------------------------------------------------")
+    print(f"Gavin encounters a {Fight.name}!")
+    print("-----------------------------------------------------------------------")
+    Fight.show_enemy()
+
+    while Gavin.hp >= 0 and Fight.hp >= 0:
+        weapon_upgrade(Gavin, round_count)
+        
+        print("-----------------------------------------------------------------------")
+        print(f"Total Game Rounds {round_count}")
+        print(f"Gavin's HP: {Gavin.hp}/{Gavin.health_max}, MP: {Gavin.mp}/{Gavin.mana_max}")
+        print("-----------------------------------------------------------------------")
+        print("What action would you like to do:")
+        print(f"1. Attack (with {Gavin.inventory["title"]})")
+        print(f"2. {Gavin.skills["title"]}")
+
+        choice = input("Pick 1 or 2:")
+        print("-----------------------------------------------------------------------")
+
         if choice == "1":
-            round += 1
-            print(f"Round {round}")
-            print(f"Gavin attacks {Fight.name}")
-            print("----------------------------------------------------------------------------")
-            atk_dmg = Gavin.atk + 2
-            Fight.hp -= atk_dmg
-            print(f"{Fight.name}'s hp is now {Fight.hp}")
-            print(f"{Gavin.name}'s hp is now {Gavin.hp}")
-            print(f"{Gavin.name}'s mp is now {Gavin.mp}")
-            Gavin.mp += 1
-        elif choice == "2": 
-            round += 1
-            print(f"Round {round}")
-            print(f"Gavin slashes {Fight.name}")
-            print("----------------------------------------------------------------------------")
-            Gavin.mp -= 3
-            slash_dmg = Gavin.atk + 5
-            Fight.hp -= slash_dmg
-            print(f"{Fight.name}'s hp is now {Fight.hp}")
-            print(f"{Gavin.name}'s hp is now {Gavin.hp}")
-            print(f"{Gavin.name}'s mp is now {Gavin.mp}")
-            Gavin.mp += 1
+                print(f"Gavin attacks {Fight.name}!")
+                attack_dmg = Gavin.atk + Gavin.inventory["atk"]
+                Fight.hp -= attack_dmg
+                print(f"{Fight.name}'s HP is now {Fight.hp}")
+                print(f"{Gavin.name}'s HP is now {Gavin.hp}")
+                print(f"{Gavin.name}'s MP is now {Gavin.mp}")
+                Gavin.mp += 1
+                if Gavin.mp > Gavin.mana_max:
+                    Gavin.mp = Gavin.mana_max
+        elif choice == "2":
+            mp_cost = 2
+            if Gavin.mp < mp_cost:
+                    print("Gavin does not have enough mana!")
+                    continue
+            else:
+                print(f"Gavin slashes {Fight.name}!")
+                Gavin.mp -= mp_cost
+                slash_dmg = Gavin.atk + Gavin.skills["atk"]
+                Fight.hp -= slash_dmg
+                Gavin.mp -= 2
+                Gavin.mp += 1
+                if Gavin.mp > Gavin.mana_max:
+                    Gavin.mp = Gavin.mana_max
+                print(f"Gavin slashes {Fight.name}!")
+                print(f"{Fight.name}'s HP is now {Fight.hp}")
+                print(f"{Gavin.name}'s HP is now {Gavin.hp}")
+                print(f"{Gavin.name}'s MP is now {Gavin.mp}")
         else:
-            round += 1
-            print(f"Round {round}")
-            print("Invalid choice")   
-            Gavin.show_status()
-        Gavin.hp -= Fight.atk
+            print("Invalid")
         if Fight.hp <= 0:
-            print("----------------------------------------------------------------------------")
+            print("-----------------------------------------------------------------------")
             print("The battle is over")
-            print("----------------------------------------------------------------------------")
-            print(f"Gavin gained {Fight.exp_given} experience.")
+            print("-----------------------------------------------------------------------")
             Gavin.exp += Fight.exp_given
+            print(f"Gavin gained {Fight.exp_given} experience!")
+            print("-----------------------------------------------------------------------")
             Gavin.lvl_up()
-            Gavin.show_status()
-            Fight = random.choice(enemies_list)
-            Fight.hp = Fight.hp_limit
-        if Gavin.hp <= 0:
-            print("----------------------------------------------------------------------------")
-            print(f"{Gavin.name} has fallen")
-            print("----------------------------------------------------------------------------")
+            Gavin.total_rounds += 1
+            Gavin.show_status
             break
-else:
-    print("Invalid Choice")
+        print(f"{Fight.name} is attacking.")
+        enemy_skill = Fight.choose_atk()
+        enemy_dmg = Fight.atk + enemy_skill["atk"]
+        Gavin.hp -= enemy_dmg
+        print(f"{Fight.name} uses {enemy_skill["title"]} and deals {enemy_dmg} damage!")
+
+        if Gavin.hp <= 0:
+                            print("-----------------------------------------------------------------------")
+                            print("You have fallen. Game Over.")
+                            print("-----------------------------------------------------------------------")
+                            return round_count
+        round_count +=1
+    return round_count
