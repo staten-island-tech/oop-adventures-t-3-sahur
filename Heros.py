@@ -1,11 +1,9 @@
 class Hero:
-    def __init__(self, name, exp, exp_limit, lvl, kills, last_kill, hp, health_max, mp, mana_max, atk, inventory, skills):
+    def __init__(self, name, exp, exp_limit, lvl, hp, health_max, mp, mana_max, atk, inventory, skills):
         self.name = name
         self.exp = exp
         self.exp_limit = exp_limit
         self.lvl = lvl
-        self.kills = kills
-        self.last_kill = last_kill
         self.hp = hp
         self.health_max = health_max
         self.mana_max = mana_max
@@ -13,9 +11,10 @@ class Hero:
         self.atk = atk
         self.inventory = inventory
         self.skills = skills
+        self.total_rounds = 1
     def lvl_up(self):
         if self.exp >= self.exp_limit:
-            self.exp -= self.exp_limit
+            self.exp = 0
             self.exp_limit += 100
             self.lvl += 1
             self.hp += 20
@@ -30,12 +29,8 @@ class Hero:
         print("=====================================")
         print(f"Level: {self.lvl}")
         print(f"Experience: {self.exp}/{self.exp_limit}")
-        print(f"Kills: {self.kills}")
         print(f"Health: {self.hp}/{self.health_max}")
         print(f"Mana: {self.mp}/{self.mana_max}")
         print(f"Attack: {self.atk}")
         print(f"Inventory: {self.inventory}")
         print(f"Skills: {self.skills}")
-
-Gavin = Hero("Gavin", 0, 100, 1, 0, 0,100, 100, 10, 10, 5, {"title": "Wooden Sword", "atk": 2}, {"title": "Slash", "atk": 3, "mp": 2})
-Gavin.show_status()
